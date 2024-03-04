@@ -11,7 +11,7 @@
   --sky-color: #33adad;
   --blue-color: #000180;
   --white-color: #fff;
-  --black-color: #eee;
+  --black-color: #000;
   --transition: all 0.4s linear;
 
   --primary-font: "Inter", sans-serif;
@@ -20,6 +20,14 @@
 
 body {
   font-family: var(--primary-font);
+}
+
+.font-primary {
+  font-family: var(--primary-font);
+}
+
+.font-secondary {
+  font-family: var(--secondary-font);
 }
 
 .member,
@@ -105,16 +113,6 @@ h3 {
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
 }
 
-.reserve,
-.trips,
-.faq,
-.contact,
-.aboutus {
-  width: 100%;
-  text-align: center;
-  padding: 30px 0;
-}
-
 .aboutus h4 {
   margin-bottom: 25px;
   margin-top: 20px;
@@ -129,18 +127,38 @@ h3 {
 .navbar {
   width: 22%;
   height: 100vh;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--sky-color);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
   position: relative;
+  
+  transition: var(--transition);
+}
+
+.navbar h1 {
+  font-size: 35px;
+  font-weight: 700;
+  padding: 30px 20px;
+  text-transform: uppercase;
+  font-family: var(--secondary-font);
   transition: var(--transition);
 }
 
 .navbar-active {
+  width: 0px;
+  transition: var(--transition);
+}
+
+.navbar-active > h1 ,
+.navbar-active .nav-menu ,
+.navbar-active .nav_logo {
   width: 0px !important;
+  visibility: hidden !important;
   opacity: 0;
+  transition: var(--transition);
 }
 
 .hamburger-menu {
@@ -164,7 +182,7 @@ h3 {
   transition: 0.4s;
 }
 
-.open .bar1 {
+/* .open .bar1 {
   -webkit-transform: rotate(-45deg) translate(-6px, 6px);
   transform: rotate(-45deg) translate(-6px, 6px);
 }
@@ -176,20 +194,13 @@ h3 {
 .open .bar3 {
   -webkit-transform: rotate(45deg) translate(-5px, -5px);
   transform: rotate(45deg) translate(-5px, -5px);
-}
-
-.navbar h1 {
-  font-size: 35px;
-  font-weight: 700;
-  padding: 30px 20px;
-  text-transform: uppercase;
-  font-family: var(--secondary-font);
-}
+} */
 
 .nav-menu {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  transition: var(--transition);
 }
 
 .nav-menu ul {
@@ -247,13 +258,13 @@ h3 {
 /* HOME SECTION START */
 .homepage,
 .login,
-.contact-section,
+.contact,
 .reserve,
 .trips,
 .faq {
   width: 100%;
   height: auto;
-  padding: 50px 50px 50px 20px;
+  padding: 50px 20px 20px 20px;
 }
 
 .home_logo img {
@@ -346,7 +357,7 @@ form h2 {
 }
 
 .input_section input {
-  width: 180px;
+  width: 200px;
   height: 30px;
   padding: 0 5px;
   border-radius: 5px;
@@ -355,6 +366,20 @@ form h2 {
 }
 
 .input_section input:focus {
+  outline: none;
+}
+
+.input_section textarea {
+  width: 200px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #cccccccc;
+  border: none;
+  resize: none;
+}
+
+.input_section textarea:focus {
   outline: none;
 }
 
@@ -370,6 +395,7 @@ form h2 {
 
 .login-box {
   width: 170px;
+  max-height: 120px;
   padding: 12px 10px;
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgb(204, 204, 204);
@@ -389,3 +415,107 @@ form h2 {
 }
 
 
+/* CONTACT PAGE START */
+.contact-section {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact_header h2 {
+  margin-bottom: 0.5rem;
+}
+
+.contact_header > p {
+  font-size: 18px;
+  color: var(--black-color);
+  font-family: var(--primary-font);
+  max-width: 450px;
+  font-weight: 450;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.timing_section > p {
+  font-size: 20px;
+  color: var(--black-color);
+  font-family: var(--primary-font);
+  max-width: 450px;
+  font-weight: 450;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+/* ACCORDION SECTION */
+.accordin {
+  margin-top: 1rem;
+}
+
+.accordin h2 {
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: var(--primary-font);
+  font-weight: 500;
+  font-size: 22px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.accordin h2::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 1px;
+  background-color: var(--black-color);
+}
+
+.accordin h2 > span {
+  font-size: 15px;
+}
+
+.accordin-icon-one {
+    padding-right: 8px;
+}
+
+.accordin-icon-two {
+    padding-left: 8px;
+}
+
+.accordin_answer {
+  font-size: 16px;
+  font-family: var(--primary-font);
+  color: var(--black-color);
+}
+
+.faq-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 0px !important;
+  padding-bottom: 170px;
+}
+
+.question-section a {
+  font-size: 20px;
+  font-family: var(--primary-font);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  color: var(--sky-color);
+  position: relative;
+}
+
+.question-section a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--sky-color);
+}

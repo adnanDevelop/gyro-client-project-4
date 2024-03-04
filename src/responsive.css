@@ -7,19 +7,44 @@
     display: none;
   }
 
+  .navbar-responsive h1 {
+    padding-left: 20px;
+  }
+
   .navbar-responsive {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 30%;
+    width: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px 20px;
     background-color: var(--sky-color);
+    padding-block: 20px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
     z-index: 100;
+    transition: var(--transition);
+  }
+
+  .nav-active {
+    width: 30% !important;
+    transition: var(--transition);
+  }
+
+  .navbar-responsive > h1,
+  .navbar-responsive .nav-menu,
+  .navbar-responsive .nav_logo {
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--transition);
+  }
+
+  .nav-active > h1,
+  .nav-active .nav-menu,
+  .nav-active .nav_logo {
+    opacity: 1;
+    visibility: visible;
   }
 
   .home_logo img {
@@ -37,8 +62,8 @@
 }
 
 @media (max-width: 768px) {
-  .navbar-responsive {
-    width: 45%;
+  .nav-active {
+    width: 45% !important;
   }
 
   .navbar-responsive h1 {
@@ -46,14 +71,47 @@
   }
 
   .homepage,
-.login {
-    padding: 20px;
-}
+  .login,
+  .contact,
+  .reserve,
+  .trips,
+  .faq {
+    padding: 50px 20px;
+  }
+
+  /* CONTACT PAGE */
+  .contact_header > p,
+  .timing_section > p {
+    font-size: 15px;
+  }
+
+  /* FAQ PAGE START */
+  .faq-flex {
+    padding-bottom: 100px !important;
+  }
+
+  .accordin h2 {
+    font-size: 18px;
+  }
+
+  .accordin_answer {
+    font-size: 15px;
+  }
+
+  .question-section a {
+    font-size: 16px;
+  }
+
+  .faq-title,
+  .question-section h1 {
+    font-size: 25px !important  ;
+  }
 }
 
 @media (max-width: 572px) {
-  .navbar-responsive {
-    width: 60%;
+  .nav-active {
+    width: 60% !important;
+    transition: var(--transition);
   }
 
   .home-content button {
@@ -78,9 +136,27 @@
     font-size: 18px;
   }
 
+  /* FAQ PAGE START */
+  .faq-flex {
+    padding-bottom: 0px !important;
+  }
 
+  .question-section {
+    margin-top: 1.5rem;
+  }
 
-}
+  /* CONTACT SECTION */
+  .input_section input {
+    width: 100%;
+    height: 35px;
+  }
 
-@media (max-width: 992px) {
+  .input_section textarea {
+    width: 100%;
+  }
+
+  .contact-section {
+    display: flex;
+    flex-direction: column;
+  }
 }

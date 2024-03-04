@@ -3,7 +3,7 @@ import logo from "../images/dark-logo.png";
 
 function LogIn() {
   return (
-    <div className="login">
+    <div className="login contact">
       <div className="login_logo">
         <img src={logo} />
       </div>

@@ -6,7 +6,6 @@ import { IconContext } from "react-icons";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
-  console.log(activeLink);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -25,9 +24,6 @@ function Navbar() {
             <div className="bar2"></div>
             <div className="bar3"></div>
           </div>
-          {/* <Link to="#" className="menu-bars">
-                        <FaIcons.FaBars onClick={showSidebar} />
-                    </Link> */}
           <div className="nav_logo">
             <Link
               to="/login"
@@ -59,7 +55,7 @@ function Navbar() {
                     activeLink === "contact" ? "active_link" : ""
                   }`}
                   onClick={() => setActiveLink("contact")}
-                  to='/contact'
+                  to="/contact"
                 >
                   Contact us
                 </Link>
@@ -77,8 +73,9 @@ function Navbar() {
             </ul>
           </nav>
         </div>
+
         {/* MOBILE NAVBAR */}
-        <div className={`navbar-responsive ${isOpen ? "navbar-active" : ""}`}>
+        <div className={`navbar-responsive ${isOpen ? "nav-active" : ""}`}>
           <h1 style={{ textTransform: "uppercase" }}>Welcome</h1>
           {/* NAVBAR LOGO */}
           <div
@@ -90,7 +87,7 @@ function Navbar() {
             <div className="bar3"></div>
           </div>
           <div className="nav_logo">
-            <Link to="/login" className="nav_link">
+            <Link to="/login" className="nav_link" onClick={() => { setIsOpen(false)}}>
               Log In
             </Link>
           </div>
@@ -103,7 +100,10 @@ function Navbar() {
                     activeLink === "faq" ? "active_link" : ""
                   }`}
                   to="/faq"
-                  onClick={() => setActiveLink("faq")}
+                  onClick={() => {
+                    setActiveLink("faq")
+                    setIsOpen(false)
+                  }}
                 >
                   FAQ
                 </Link>
@@ -113,8 +113,11 @@ function Navbar() {
                   className={`nav_link ${
                     activeLink === "contact" ? "active_link" : ""
                   }`}
-                  onClick={() => setActiveLink("contact")}
-                  to='/contact'
+                  onClick={() => {
+                    setActiveLink("contact")
+                    setIsOpen(false)
+                  }}
+                  to="/contact"
                 >
                   Contact us
                 </Link>
@@ -124,7 +127,10 @@ function Navbar() {
                   className={`nav_link ${
                     activeLink === "about" ? "active_link" : ""
                   }`}
-                  onClick={() => setActiveLink("about")}
+                  onClick={() => {
+                    setActiveLink("about")
+                    setIsOpen(false)
+                  }}
                 >
                   About us
                 </Link>
